@@ -22,6 +22,7 @@ const options = {
 
 let quiry = '';
 let page = 1;
+let perPage = 20;
 
 form.addEventListener('submit', onSearchPictures);
 
@@ -38,10 +39,12 @@ async function onSearchPictures(evt) {
     return;
   }
 
-  pixabayAPI(quiry, page)
+  pixabayAPI(quiry, page, perPage)
     .then(data => {
-      console.log(data);
+      //   console.dir(data);
+      observer.observe(guard);
       if (data.totalHits === 0) {
+        observer.unobserve(guard);
         Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
@@ -49,7 +52,6 @@ async function onSearchPictures(evt) {
 
       createMarkup(data.hits);
       galleryModal.refresh();
-      observer.observe(guard);
     })
     .catch(err => console.log(err));
   console.log(quiry);
@@ -61,14 +63,15 @@ function onLoad(entries, observer) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       page += 1;
-      pixabayAPI(quiry, page)
+      pixabayAPI(quiry, page, perPage)
         .then(data => {
           createMarkup(data.hits);
           galleryModal.refresh();
-          if (page === data.hits.length) {
+          if (page === Math.ceil(data.totalHits / perPage)) {
             observer.unobserve(guard);
           }
-          console.log(page);
+          //   console.log(page);
+          //   console.log(Math.ceil(data.totalHits / perPage));
         })
         .catch(err => console.log(err));
     }
