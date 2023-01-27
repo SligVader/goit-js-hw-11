@@ -1,28 +1,100 @@
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
+// .example {
+//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+//     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+//   line-height: 1.5;
+//   background-color: #fff;
+//   color: #2f2f37;
+//   max-width: 960px;
+//   padding: 16px;
+// }
+
+// .example code {
+//   font-family: monospace;
+//   font-size: 16px;
+//   font-weight: 700;
+//   background-color: #ff6b0a;
+//   color: #fff;
+//   padding: 2px 6px;
+//   border-radius: 2px;
+// }
+
+// .example .background {
+//   height: 240px;
+// ❗️❗️❗️ The path to images from a SASS file
+// is always the same as from the css folder.
+// background-image: url('../images/logo.png');
+// background-size: cover;
+// background-position: center;
+// }
+
+.search-bar {
+  height: 40px;
+  display: flex;
+  background-color: rgb(44, 44, 44);
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+img {
+  width: 100%;
+}
+
+.photo-card {
+  position: relative;
+  width: calc((100% - 30px) / 4);
+  height: 270px;
   background-color: #fff;
-  color: #2f2f37;
-  max-width: 960px;
-  padding: 16px;
+
+  border: 1px solid #eeeeee;
+}
+.photo-card:hover {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.info {
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  background-color: #fff;
+  top: 200px;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
 }
 
-.example code {
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: #ff6b0a;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
+.info-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+// .info-item:first-child {
+//   width: 50px;
+// }
+// .info-item:nth-child(2) {
+//   width: 50px;
+// }
+// .info-item:nth-child(3) {
+//   width: 90px;
+// }
+// .info-item:not(:last-child) {
+//   margin-right: 10px;
+// }
 
-.example .background {
-  height: 240px;
-  // ❗️❗️❗️ The path to images from a SASS file
-  // is always the same as from the css folder.
-  background-image: url('../images/logo.png');
-  background-size: cover;
-  background-position: center;
+span {
+  font-weight: 400;
+  font-size: 15px;
+}
+.caption {
+  text-align: center;
 }
