@@ -44,14 +44,17 @@ async function onSearchPictures(evt) {
       //   console.dir(data);
 
       if (data.totalHits === 0) {
-        observer.unobserve(guard);
         Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
       } else Notify.success(`Hooray! We found ${data.totalHits} images.`);
-
+      if (Math.ceil(data.totalHits >= perPage)) {
+        observer.observe(guard);
+      } else
+        Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
       createMarkup(data.hits);
-      observer.observe(guard);
       galleryModal.refresh();
     })
     .catch(err => console.log(err));
