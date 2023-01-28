@@ -16,7 +16,7 @@ const galleryModal = new SimpleLightbox('.gallery a', {
 
 const options = {
   root: null,
-  rootMargin: '300px',
+  rootMargin: '100px',
   threshold: 1.0,
 };
 
@@ -28,6 +28,7 @@ form.addEventListener('submit', onSearchPictures);
 
 async function onSearchPictures(evt) {
   evt.preventDefault();
+  observer.unobserve(guard);
   gallery.innerHTML = '';
   quiry = form.searchQuery.value.trim();
   page = 1;
@@ -41,7 +42,7 @@ async function onSearchPictures(evt) {
 
   pixabayAPI(quiry, page, perPage)
     .then(data => {
-      //   console.dir(data);
+      //   console.log(data);
 
       if (data.totalHits === 0) {
         Notify.failure(
@@ -50,10 +51,13 @@ async function onSearchPictures(evt) {
       } else Notify.success(`Hooray! We found ${data.totalHits} images.`);
       if (Math.ceil(data.totalHits >= perPage)) {
         observer.observe(guard);
-      } else
-        Notify.info(
-          "We're sorry, but you've reached the end of search results."
-        );
+        createMarkup(data.hits);
+        galleryModal.refresh();
+      }
+      //  else
+      // Notify.info(
+      //   "We're sorry, but you've reached the end of search results."
+      // );
       createMarkup(data.hits);
       galleryModal.refresh();
     })
@@ -102,21 +106,21 @@ function createMarkup(arr) {
   <div class="info">
     <p class="info-item">
       Likes
-      <span>${likes}</span>
+      <span class="info-item--span">${likes}</span>
     </p>
     <p class="info-item">
       Views
-      <span>${views}</span>
+      <span class="info-item--span">${views}</span>
       
     </p>
     <p class="info-item">
       Comments
-      <span>${comments}</span>
+      <span class="info-item--span">${comments}</span>
       
     </p>
     <p class="info-item">
       Downloads
-      <span>${downloads}</span>
+      <span class="info-item--span">${downloads}</span>
       
     </p>
   </div>
@@ -126,4 +130,4 @@ function createMarkup(arr) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
 }
-console.log('500');
+console.log('3000');

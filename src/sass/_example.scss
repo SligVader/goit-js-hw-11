@@ -88,7 +88,7 @@ img {
   padding: 10px 10px;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
 
   @media screen and (min-width: 768px) and (max-width: 1190px) {
     max-width: 100%;
@@ -97,22 +97,28 @@ img {
 
 .info-item {
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--font-color-one);
-  margin-bottom: 4px;
+  font-size: 14px;
+  color: rgb(68, 68, 68);
+  margin: 0;
   max-width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-span {
+.info-item--span {
   font-size: 10px;
   line-height: 1.8;
-  color: var(--font-color-two);
+  color: gray;
   max-width: 100%;
 }
+
+// span {
+//   font-size: 1px;
+//   line-height: 1.8;
+//   color: var(--font-color-two);
+//   max-width: 100%;
+// }
 
 // .info {
 //   width: 100%;
