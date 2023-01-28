@@ -126,3 +126,4 @@ function createMarkup(arr) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
 }
+console.log('500');

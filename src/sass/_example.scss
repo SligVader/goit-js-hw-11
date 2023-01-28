@@ -30,7 +30,7 @@
 .search-bar {
   height: 40px;
   display: flex;
-  background-color: rgb(44, 44, 44);
+  background-image: linear-gradient(to bottom, gray, black);
   justify-content: center;
   align-items: center;
 }
@@ -49,33 +49,17 @@
   flex-wrap: wrap;
   padding: 0;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 12px;
 
-  @media screen and (min-width: 1200px) {
-    margin-right: -30px;
-    margin-bottom: -30px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1190px) {
-    justify-content: flex-start;
-    margin-right: 0px;
-    gap: 30px;
-    flex-basis: 50%;
-    max-width: 100%;
-  }
-
-  @media screen and (max-width: 768px) {
-    justify-content: flex-start;
-    margin-right: 0px;
-    gap: 30px;
-    flex-basis: 100%;
-    max-width: 100%;
-  }
+  max-width: 100%;
 }
 
 img {
   display: block;
   max-width: 100%;
-  height: auto;
+  background-size: cover;
 }
 
 .photo-card {
@@ -84,19 +68,8 @@ img {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #eeeeee;
-
   flex-basis: calc(100% / 6 - 30px);
-
-  @media screen and (max-width: 767px) {
-    flex-basis: calc(100% / 6 - 30px);
-    // margin-right: 0px;
-    // min-width: 450px;
-    // width: 100%;
-  }
-
-  @media screen and (min-width: 1200px) {
-    flex-basis: calc(100% / 6 - 30px);
-  }
+  max-width: 300px;
 }
 
 // .photo-card {
@@ -123,8 +96,8 @@ img {
 }
 
 .info-item {
-  font-weight: 50;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 12px;
   letter-spacing: 0.06em;
   color: var(--font-color-one);
   margin-bottom: 4px;
@@ -135,7 +108,7 @@ img {
 }
 
 span {
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.8;
   color: var(--font-color-two);
   max-width: 100%;
