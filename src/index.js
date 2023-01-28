@@ -22,7 +22,7 @@ const options = {
 
 let quiry = '';
 let page = 1;
-let perPage = 40;
+let perPage = 20;
 
 form.addEventListener('submit', onSearchPictures);
 
@@ -69,6 +69,9 @@ function onLoad(entries, observer) {
           createMarkup(data.hits);
           galleryModal.refresh();
           if (page === Math.ceil(data.totalHits / perPage)) {
+            Notify.info(
+              "We're sorry, but you've reached the end of search results."
+            );
             observer.unobserve(guard);
           }
           //   console.log(page);
