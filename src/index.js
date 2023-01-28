@@ -16,13 +16,13 @@ const galleryModal = new SimpleLightbox('.gallery a', {
 
 const options = {
   root: null,
-  rootMargin: '1000px',
+  rootMargin: '300px',
   threshold: 1.0,
 };
 
 let quiry = '';
 let page = 1;
-let perPage = 20;
+let perPage = 40;
 
 form.addEventListener('submit', onSearchPictures);
 
@@ -42,7 +42,7 @@ async function onSearchPictures(evt) {
   pixabayAPI(quiry, page, perPage)
     .then(data => {
       //   console.dir(data);
-      observer.observe(guard);
+
       if (data.totalHits === 0) {
         observer.unobserve(guard);
         Notify.failure(
@@ -51,6 +51,7 @@ async function onSearchPictures(evt) {
       } else Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
       createMarkup(data.hits);
+      observer.observe(guard);
       galleryModal.refresh();
     })
     .catch(err => console.log(err));
